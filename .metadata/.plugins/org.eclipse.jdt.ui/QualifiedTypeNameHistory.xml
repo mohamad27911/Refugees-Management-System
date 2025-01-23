@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="javax.swing.JDialog"/>
+    <fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
+    <fullyQualifiedTypeName name="javax.swing.JTextField"/>
+    <fullyQualifiedTypeName name="javax.swing.JPasswordField"/>
+    <fullyQualifiedTypeName name="javax.swing.JCheckBox"/>
+    <fullyQualifiedTypeName name="java.awt.GridLayout"/>
+    <fullyQualifiedTypeName name="javax.swing.JLabel"/>
+    <fullyQualifiedTypeName name="javax.swing.JButton"/>
+    <fullyQualifiedTypeName name="java.awt.event.ActionEvent"/>
+    <fullyQualifiedTypeName name="Refugees_Management_System.Refugee"/>
+    <fullyQualifiedTypeName name="Refugees_Management_System.Donor"/>
+    <fullyQualifiedTypeName name="Refugees_Management_System.DonationQueue"/>
+    <fullyQualifiedTypeName name="Refugees_Management_System.Donation"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="Refugees_Management_System.RefugeesQueue"/>
+    <fullyQualifiedTypeName name="Refugees_Management_System.CountriesList"/>
+</qualifiedTypeNameHistroy>

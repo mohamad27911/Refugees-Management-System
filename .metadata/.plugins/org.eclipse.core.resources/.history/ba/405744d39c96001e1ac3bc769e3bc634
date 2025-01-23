@@ -1,0 +1,6 @@
+package Refugees_Management_System;
+
+public class CountriesList {
+	private LinkedList<Donation> donationList;
+
+}

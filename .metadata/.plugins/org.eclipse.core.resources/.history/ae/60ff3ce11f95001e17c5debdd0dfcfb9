@@ -1,0 +1,59 @@
+package Refugees_Management_System;
+
+public class Donation {
+	private Donor donor;
+	private Refugee refugee;
+	private double donationAmount;
+
+	public Donation() {
+		this.donor = null;
+		this.refugee = null;
+		this.donationAmount = 0.0;
+	}
+
+	public Donation(Donor donor, Refugee refugee, double donationAmount) {
+		this.donor = donor;
+		this.refugee = refugee;
+		this.donationAmount = donationAmount;
+	}
+
+	public Donor getDonor() {
+		return donor;
+	}
+
+	public void setDonor(Donor donor) {
+		this.donor = donor;
+	}
+
+	public Refugee getRefugee() {
+		return refugee;
+	}
+
+	public void setRefugee(Refugee refugee) {
+		this.refugee = refugee;
+	}
+
+	public double getDonationAmount() {
+		return donationAmount;
+	}
+
+	public void setDonationAmount(double donationAmount) {
+		this.donationAmount = donationAmount;
+	}
+
+	public void transferDonation() {
+		if (donor != null && refugee != null && donationAmount > 0) {
+			double donorBalance = donor.getBalance();
+			if (donorBalance >= donationAmount) {
+				donor.setBalance(donorBalance - donationAmount);
+				refugee.receiveDonation(donationAmount);
+				System.out.println("Donation of $" + donationAmount + " transferred from " + donor.getName() + " to "
+						+ refugee.getName() + ".");
+			} else {
+				System.out.println("Insufficient funds in donor's account.");
+			}
+		} else {
+			System.out.println("Invalid donation details.");
+		}
+	}
+}

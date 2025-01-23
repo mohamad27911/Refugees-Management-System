@@ -1,0 +1,34 @@
+package Refugees_Management_System;
+
+public class DonationQueue {
+	private LinkedList<Donation> donationList;
+
+	public DonationQueue() {
+		donationList = new LinkedList<>();
+	}
+	
+
+	public LinkedList<Donation> getDonationList() {
+		return donationList;
+	}
+
+
+	public void setDonationList(LinkedList<Donation> donationList) {
+		this.donationList = donationList;
+	}
+
+
+	public void addDonation(Donation d) {
+		donationList.insertWithPriority(d, d.getDonationAmount());
+	}
+	 public boolean removeDonation(Donation d) {
+		return donationList.remove(d);
+	 }
+	 public Donation searchDonation(int amount) {
+		 return donationList.search(d.getId());
+	 }
+	 public void Display() {
+		 donationList.display();
+
+	 }
+}

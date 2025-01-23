@@ -1,0 +1,48 @@
+package Refugees_Management_System;
+
+public class TestClasses {
+	public static void main(String[] args) {
+		 Refugee alice = new Refugee("Alice", 25, "CountryA", 500, "CountryA", 3, "Needs food");
+	        Refugee bob = new Refugee("Bob", 30, "CountryB", 700, "CountryB", 2, "Needs shelter");
+	        Refugee charlie = new Refugee("Charlie", 20, "CountryC", 600, "CountryC", 1, "Needs medical aid");
+
+	        // Initial donations
+	        Donor donor1 = new Donor("Donor1", 40, "CountryD", 300);
+	        Donor donor2 = new Donor("Donor2", 50, "CountryE", 400);
+	        Donor donor3 = new Donor("Donor3", 35, "CountryF", 200);
+
+	        // Create RefugeesQueue and LinkedList<Donation>
+	        RefugeesQueue refugeesQueue = new RefugeesQueue();
+	        DonationQueue donations = new DonationQueue();
+
+	        // Adding refugees to the queue
+	        refugeesQueue.addRefugee(alice);
+	        refugeesQueue.addRefugee(bob);
+	        refugeesQueue.addRefugee(charlie);
+
+	        // Creating donations and transferring
+	        Donation donation1 = new Donation(donor1, alice, 200);
+	        Donation donation2 = new Donation(donor2, bob, 350);
+	        Donation donation3 = new Donation(donor3, charlie, 250);
+
+	        donations.addDonation(donation1);
+	        donations.addDonation(donation2);
+	        donations.addDonation(donation3);
+
+	        // Display initial queue
+	        System.out.println("Initial Queue:");
+	        refugeesQueue.displayRefugees();
+
+	        // Display initial donations
+	        System.out.println("\nInitial Donations:");
+	        donations.Display();
+
+	        
+	        	refugeesQueue.distributeAid(donations);
+
+	        // Display updated queue
+	        System.out.println("\nUpdated Queue:");
+	        refugeesQueue.displayRefugees();
+	    
+	}
+}

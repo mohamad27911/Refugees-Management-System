@@ -1,0 +1,51 @@
+package Refugees_Management_System;
+
+public class Menu {
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Menu {
+
+	private Scanner scanner;
+
+	public Menu(Account acc, Database database, ArrayList<Account> accounts) {
+		scanner = new Scanner(System.in);
+
+		System.out.println("Welcome " + acc.getFirstName() + " " + acc.getLastName());
+		System.out.println("Select an option:");
+		System.out.println("1. Deposit");
+		System.out.println("2. Withdraw");
+		System.out.println("3. Check Balance");
+
+		int choice = 0;
+		boolean validChoice = false;
+		while (!validChoice) {
+			try {
+				System.out.print("Enter your choice (1-3): ");
+				choice = Integer.parseInt(scanner.nextLine());
+				if (choice >= 1 && choice <= 3) {
+					validChoice = true;
+				} else {
+					System.out.println("Please enter a valid choice (1-3).");
+				}
+			} catch (NumberFormatException e) {
+				System.out.println("Invalid input. Please enter a number (1-3).");
+			}
+		}
+
+		switch (choice) {
+		case 1:
+			new Deposit(acc, database, accounts);
+			break;
+		case 2:
+			new Withdraw(acc, database, accounts);
+			break;
+		case 3:
+			System.out.println("Your balance is: " + acc.getBalance());
+			break;
+		default:
+			break;
+		}
+	}
+}

@@ -1,0 +1,13 @@
+package Refugees_Management_System;
+
+public class DonationQueue {
+    private LinkedList<Donation> donationList;
+
+    public DonationQueue() {
+        donationList = new LinkedList<>();
+    }
+
+    public void addDonation(Donation d) {
+        donationList.insertWithPriority(d, d.getDonationAmount());
+    }
+}

@@ -1,0 +1,75 @@
+package Refugees_Management_System;
+
+public class RefugeesQueue {
+
+	private LinkedList<Refugee> refugeeList;
+
+	public RefugeesQueue() {
+		refugeeList = new LinkedList<>();
+	}
+
+	public LinkedList<Refugee> getRefugeeList() {
+		return refugeeList;
+	}
+
+	public void setRefugeeList(LinkedList<Refugee> refugeeList) {
+		this.refugeeList = refugeeList;
+	}
+
+	public void addRefugee(Refugee r) {
+		refugeeList.insertWithPriority(r, r.getDonationNeeded());
+	}
+
+	public Refugee removeRefugee(Refugee r) {
+		return refugeeList.remove(r);
+	}
+
+	public Refugee searchRefugee(int r) {
+		return refugeeList.searchById(r);
+	}
+
+	public void displayRefugees() {
+		refugeeList.display();
+	}
+
+	public void distributeAid(DonationQueue donationQueue) {
+		double totalDonation = 0;
+		Node<Donation> currentDonation = donationQueue.getDonationList().getFirst();
+
+		while (currentDonation != null) {
+			totalDonation += currentDonation.getData().getDonationAmount();
+			currentDonation = currentDonation.getNext();
+		}
+		System.out.println(totalDonation);
+		distributeAidAmongRefugees(totalDonation);
+	}
+
+	private void distributeAidAmongRefugees(double totalDonation) {
+		double remainingDonation = totalDonation;
+		Node<Refugee> current = refugeeList.getFirst();
+		while (current != null) {
+			Refugee r = refugeeList.getFirst().getData();//refugee
+			if (r.getDonationNeeded() >= remainingDonation) {
+				remainingDonation-=r.getDonationNeeded();
+				r.setDonationNeeded(0);
+				refugeeList.remove(r);
+			}else {
+				if (remainingDonation >0) {
+					r.setDonationNeeded(r.getDonationNeeded()-remainingDonation);
+					remainingDonation=0;
+					Refugee r2 = r;//refugee temp
+					refugeeList.remove(r);
+					
+				}
+			}
+		}
+
+		if (remainingDonation > 0) {
+			System.out.println("Total donation of $" + totalDonation + " distributed among the refugees.");
+		} else {
+			System.out.println(
+					"Partial donation of $" + (totalDonation - remainingDonation) + " distributed among the refugees.");
+		}
+	}
+
+}

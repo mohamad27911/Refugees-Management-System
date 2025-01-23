@@ -1,0 +1,52 @@
+package Refugees_Management_System;
+
+public class TestClasses {
+	public static void main(String[] args) {
+		 RefugeesQueue refugeesQueue = new RefugeesQueue();
+
+	        // Creating some sample refugees
+	        Refugee refugee1 = new Refugee("John", 25, "Syria", 500, "Syria", 2, "Needs shelter");
+	        Refugee refugee2 = new Refugee("Alice", 30, "Afghanistan", 700, "Afghanistan", 1, "Needs medical aid");
+	        Refugee refugee3 = new Refugee("Emma", 20, "Somalia", 400, "Somalia", 3, "Needs food");
+	        
+	        DonationQueue donationQueue = new DonationQueue();
+
+	        // Adding donations to the queue
+	        Donation donation1 = new Donation(new Donor("John", 30, "USA", 500),refugee1 , 200);
+	        Donation donation2 = new Donation(new Donor("Emily", 35, "UK", 1000), refugee2, 300);
+	        Donation donation3 = new Donation(new Donor("Alex", 40, "Canada", 800),refugee3, 400);
+
+	        donationQueue.addDonation(donation1);
+	        donationQueue.addDonation(donation2);
+	        donationQueue.addDonation(donation3);
+
+	        // Displaying all donations
+	        System.out.println("All Donations:");
+	        donationQueue.Display();
+	        System.out.println();
+
+	        // Searching for a donation based on its amount
+	        System.out.println("Searching for a donation with amount 200:");
+	        Donation searchedDonation = donationQueue.searchDonation(999);
+	        if (searchedDonation != null) {
+	            System.out.println("Found Donation: " + searchedDonation);
+	        } else {
+	            System.out.println("Donation not found.");
+	        }
+	        System.out.println();
+
+	        // Removing a donation
+	        System.out.println("Removing a donation:");
+	        Donation removed = donationQueue.removeDonation(donation2);
+	        if (removed!=null) {
+	            System.out.println("Donation removed successfully.");
+	        } else {
+	            System.out.println("Failed to remove donation.");
+	        }
+	        System.out.println();
+
+	        // Displaying updated donations after removal
+	        System.out.println("Updated Donations:");
+	        donationQueue.Display();
+	    }
+	}
